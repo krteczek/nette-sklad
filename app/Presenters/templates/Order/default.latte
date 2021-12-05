@@ -1,0 +1,21 @@
+{block content}
+
+	<a n:href="Edit:create">Napsat nový příspěvek</a>
+	{if $user->isLoggedIn()}<a n:href="OrderEdit:create">Vytvořit příspěvek</a>{/if}
+
+
+	<h1 n:block="title">Můj blog bbbb</h1>
+	<table>
+	{foreach $post as $pos}
+	   
+	    <tr>
+	    <td>{$pos->id}</td>
+	    <td>{$pos->_name}</td>
+	    <td>{$pos->_desc}</td>
+	    <td>{$pos->_price}</td>
+	    <td>{$pos->category}</td>
+	    {if $user->isLoggedIn()}<td><a n:href="order:edit $pos->id">Upravit položku</a></td>{/if}
+	    </tr>
+	{/foreach}
+	</table>
+{/block}
