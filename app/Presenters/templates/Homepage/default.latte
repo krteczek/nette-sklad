@@ -1,17 +1,12 @@
 {block content}
-	{if $user->isLoggedIn()}<a n:href="Edit:create">Vytvořit příspěvek</a>{/if}
+	{if $user->isLoggedIn()}<a n:href="category:create">Přidat kategorii</a>{/if}
+		<h1 n:block="title">Můj blog</h1>
 
-
-	<h1 n:block="title">Můj blog</h1>
-
-	{foreach $posts as $post}
+	{foreach $post as $posts}
 	<div class="post">
-		<div class="date">{$post->created_at|date:'F j, Y'}</div>
+		<div class="date"></div>
 
-		<h2><a href="{link Post:show $post->id}">{$post->title}</a></h2>
-
-		<div>{$post->content|truncate:256}</div>
-		{if $user->isLoggedIn()}<a n:href="edit:edit $post->id">Upravit příspěvek</a>{/if}
+		<h2><a href="{link Category:show $posts->id}"> vypsat obsah kategorie: {$posts->cat_name}</a></h2>
 	</div>
 	{/foreach}
 {/block}
